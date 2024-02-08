@@ -107,33 +107,8 @@ function onClickOpenImg(event) {
   instance.show();
 
   function onCloseImg(event) {
-    console.log(event);
-    if (event.code === 'Escape') {
+      if (event.code === 'Escape') {
       instance.close();
     }
   }
 }
-
-function onImageClick(event) {
-  event.preventDefault();
-
-  if (!event.target.classList.contains('gallery-image')) {
-    return;
-  }
-
-  const modalWindow = basicLightbox.create(`
-    <img src='${event.target.dataset.source}'>
-    `);
-
-  modalWindow.show();
-
-  window.addEventListener('keydown', onEscapePress);
-
-  function onEscapePress(event) {
-    if (event.code === 'Escape') {
-      modalWindow.close();
-
-      window.removeEventListener('keydown', onEscapePress);
-    }
-  }
-};
